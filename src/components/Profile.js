@@ -16,7 +16,7 @@ function Profile() {
       try {
         const user = auth.currentUser;
        // const userRef = db.doc(`users/${user.uid}`);
-       const userRef = db.collection('users').doc(user.uid); 
+       const userRef = db.collection('users').doc(user.uid);
         const snapshot = await userRef.get();
 
         if (snapshot.exists()) {

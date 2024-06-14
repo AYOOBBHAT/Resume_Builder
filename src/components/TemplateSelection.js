@@ -1,27 +1,27 @@
 // src/components/TemplateSelection.js
-import { useState } from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function TemplateSelection() {
-  const [template, setTemplate] = useState('simple');
+  const navigate = useNavigate();
 
-  const templates = [
-    { id: 'simple', name: 'Simple' },
-    // Add more templates as needed
-  ];
+  const handleSelectTemplate = (templateId) => {
+    // Handle template selection logic
+    // For example, you might save the selected template ID to state or perform other actions
+
+    // After selecting a template, navigate to the resume sections or other appropriate route
+    navigate('/resume'); // Example: Navigate to resume sections after selecting a template
+  };
 
   return (
-    <div className="flex flex-col gap-4">
-      <h2>Select a Template</h2>
-      <div className="flex gap-4">
-        {templates.map((tmpl) => (
-          <button
-            key={tmpl.id}
-            className={`p-2 ${template === tmpl.id ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
-            onClick={() => setTemplate(tmpl.id)}
-          >
-            {tmpl.name}
-          </button>
-        ))}
+    <div>
+      <h2>Select Template</h2>
+      <div>
+        {/* Replace with actual template selection UI */}
+        <p>Select a template:</p>
+        <button onClick={() => handleSelectTemplate(1)}>Template 1</button>
+        <button onClick={() => handleSelectTemplate(2)}>Template 2</button>
+        <button onClick={() => handleSelectTemplate(3)}>Template 3</button>
       </div>
     </div>
   );

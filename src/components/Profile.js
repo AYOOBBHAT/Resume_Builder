@@ -1,10 +1,10 @@
 // src/components/Profile.js
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { auth } from '../firebase'; // Firebase auth instance
 
 function Profile() {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [displayName, setDisplayName] = useState('');
   const [email, setEmail] = useState('');
@@ -17,12 +17,12 @@ function Profile() {
         setDisplayName(user.displayName || '');
         setEmail(user.email || '');
       } else {
-        history.push('/login'); // Redirect to login if user is not logged in
+        navigate('/login'); // Redirect to login if user is not logged in
       }
     });
 
     return () => unsubscribe();
-  }, [history]);
+  }, [navigate]);
 
   const handleUpdateProfile = async (e) => {
     e.preventDefault();

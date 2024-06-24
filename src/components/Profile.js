@@ -275,8 +275,13 @@ function Profile() {
     const fetchUserProfile = async () => {
       try {
         const user = auth.currentUser;
+
+       // const userRef = db.doc(`users/${user.uid}`);
+       const userRef = db.collection('users').doc(user.uid);
+        const snapshot = await userRef.get();
         const userRef = doc(db, 'users', user.uid);
         const snapshot = await getDoc(userRef);
+
 
         if (snapshot.exists()) {
           const userData = snapshot.data();
